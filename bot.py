@@ -55,6 +55,24 @@ async def kick(ctx, member : discord.Member, *, reason=None):
 async def ban(ctx, member : discord.Member, *, reason=None):
     # ban member even if reason=none. 
     await member.ban(reason=reason)
+    await ctx.send(f'Banned {member.mention}')
+
+# function decorator
+@client.command()
+# passing in ctx=context, asterisk to grab any info in relation, pass in member
+async def unban(ctx, *, member):
+    # goes through banned users on server and generates a list of banned entries containing user object and reason for user ban
+    banned_users = await ctx.guild.bans()
+    
+    # going through all banned entries
+    for ban_entry in banned_users:
+        # pull user from ban entry, set to user
+        user = ban_entry.user
+        # uses unban method from guild
+        await ctx.guild.unban(user)
+        # bot sends message to server tha user is unbanned. 
+        await ctx.send(f'Unbanned {user.mention}')
+    
 
 # function decorator
 @client.command()
@@ -96,4 +114,4 @@ async def _8ball(ctx, *, question):
     await ctx.send(f'\nMy answer for you is: \n{random.choice(responses)}')
 
 # run client//insert bot token//links code to application
-client.run('Put your discord key here')
+client.run('your key goes here')
