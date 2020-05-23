@@ -32,8 +32,8 @@ async def on_member_remove(member):
 
 @client.command()
 # commanding bot // ctx = context // * 1000 to get milliseconds, round() to round up//displaying latency of bot
-async def ping(ctx):
-    await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
+async def bot_ping(ctx):
+    await ctx.send(f'bot_Pong! {round(client.latency * 1000)}ms')
 
 @client.command()
 # kick command, passing in ctx=context, pass in member as a member object, pass in reason for audit logs,
@@ -108,12 +108,14 @@ async def _8ball(ctx, *, question):
 async def load(ctx, extension):
     # method used to load extension//accesing example through cogs folder
     client.load_extension(f'cogs.{extension}')
+    await ctx.send('Cog is loaded Captain.')
 
 @client.command()
 # unload command to unload extension //ctx=context, extension is going to represent cog i want to unload
 async def unload(ctx, extension):
     # method used to unload extension//accessing example through cogs folder
     client.unload_extension(f'cogs.{extension}')
+    await ctx.send('Cog is unloaded Captain.')
 
 # dir=directory//listdir() lists all files in given directory// './cogs' represents current directory, give all files within directory
 for filename in os.listdir('./cogs'):
@@ -123,4 +125,4 @@ for filename in os.listdir('./cogs'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 # run client//insert bot token//links code to application
-client.run('Your token goes here.')
+client.run('NzExOTM4OTkxODcxNzU0MjYx.Xsl6og.GlELT4k80C5fQWQNX0gjcck5x10')

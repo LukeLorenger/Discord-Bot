@@ -14,9 +14,9 @@ class Example(commands.Cog):
         print('Bot(cog) is ready Captain')
 
     # cog commands
-    #@commands.command()
-    #async def ping(self, ctx):
-    #    await ctx.send('Pong!')
+    @commands.command()
+    async def ping(self, ctx):
+        await ctx.send(f'Pong from Cog! {round(self.client.latency * 1000)}ms')
 
 # setup function, allowing cog to connect to bot
 def setup(client):
