@@ -127,4 +127,4 @@ for filename in os.listdir('./cogs'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 # run client//insert bot token//links code to application
-client.run('NzExOTM4OTkxODcxNzU0MjYx.XsmIMA.2oEpgDxf_qyW0tvDINWi49Is2_Q')
+client.run('Your Token Here')
