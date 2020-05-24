@@ -10,9 +10,13 @@ import random
 import os
 # importing asyncio for sleep command
 import asyncio
-from discord.ext import commands
+from discord.ext import commands, tasks
+from itertools import cycle
+
 # prefix initiates bot, instance of bot created and set to client variable
 client = commands.Bot(command_prefix = '!')
+# status to choose from
+status = cycle(['She loves me!', 'She loves me not..'])
 
 # function decorator
 @client.event
@@ -20,7 +24,15 @@ client = commands.Bot(command_prefix = '!')
 async def on_ready():
     # when bot becomes ready, status is changed to online, activity,
     await client.change_presence(status=discord.Status.online, activity=discord.Game('The Game Of Life'))
+    #starts status change
+    change_status.start()
     print('Bot is ready Captain.')
+
+# Create task // Loop that updates status of bot every 10 sec
+@tasks.loop(seconds=10)
+async def change_status():
+    # setting activity to discord.Game object, using cycle status passed in as games name
+    await client.change_presence(activity=discord.Game(next(status)))
 
 @client.event
 # async-function //  member is a member object, message saying member has joined server
