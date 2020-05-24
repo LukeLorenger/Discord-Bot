@@ -18,6 +18,8 @@ client = commands.Bot(command_prefix = '!')
 @client.event
 # async-function // When bot has all info from discord, the bot puts itself into ready state(first event)
 async def on_ready():
+    # when bot becomes ready, status is changed to online, activity,
+    await client.change_presence(status=discord.Status.online, activity=discord.Game('The Game Of Life'))
     print('Bot is ready Captain.')
 
 @client.event
@@ -125,4 +127,4 @@ for filename in os.listdir('./cogs'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 # run client//insert bot token//links code to application
-client.run('Your token here. ')
+client.run('NzExOTM4OTkxODcxNzU0MjYx.XsmIMA.2oEpgDxf_qyW0tvDINWi49Is2_Q')
