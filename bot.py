@@ -148,7 +148,7 @@ async def load(ctx, extension):
 
 
 @client.command()
-# unload command to unload extension //ctx=context, extension is going to represent cog i want to unload
+# unload command to unload extension //ctx=context, extension zxczczfdis going to represent cog i want to unload
 async def unload(ctx, extension):
     # method used to unload extension//accessing example through cogs folder
     client.unload_extension(f'cogs.{extension}')
@@ -163,4 +163,5 @@ for filename in os.listdir('./cogs'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 # run client//insert bot token//links code to application
-client.run('Your Token Here')
+# Change key before uploading to git
+client.run('Place Key Here')
