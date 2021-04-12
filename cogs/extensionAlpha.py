@@ -1,7 +1,7 @@
 from discord.ext import commands
 
 # Inherit from commands.Cog
-class Example(commands.Cog):
+class ExtensionAlpha(commands.Cog):
 
     # allows us to reference client, passing into cog
     def __init__(self, client):
@@ -10,14 +10,14 @@ class Example(commands.Cog):
     # function decorator for event within a cog
     @commands.Cog.listener()
     async def on_ready(self):
-        print('example-cog is ready.')
+        print('ExtensionAlpha-cog is ready.')
 
     # cog commands
     @commands.command()
-    async def ping(self, ctx):
-        await ctx.send(f'Pong from Cog! {round(self.client.latency * 1000)}ms')
+    async def pingAlpha(self, ctx):
+        await ctx.send(f'Pong from ExtensionAlpha! {round(self.client.latency * 1000)}ms')
 
 # setup function, allowing cog to connect to bot
 def setup(client):
     # running add_cog method of client, passing in instance of Example class
-    client.add_cog(Example(client))
+    client.add_cog(ExtensionAlpha(client))
