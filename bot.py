@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 (Check for discord updates) If error "deny-new", cmd prompt pip install -U discord.py
 """
